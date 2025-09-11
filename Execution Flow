@@ -1,7 +1,15 @@
 Steps to create the environment in AWS:
 
 Step 1:
-  Got to Code Build -> Get Started
+  Go to Code Build -> Get Started
      -> Provide name, default project
      -> Provide source provider code where it exists (Github), public repository, repository URL
-     -> Add the Buildspec, by adding the buildspec file name from our code files, Create CodeBuild Project
+     -> Add the Buildspec, by adding the buildspec file name from our code files, Create CodeBuild Project ("We can notification also here")
+
+We need to run the CodeBuild in CodePipeline
+
+Step 2:
+  Go to CodePipeline -> Get Started
+     -> Build CustomPipeline, provide pipeline name, queued mode,  next
+     -> Provide Source provider(Github via App), click connect to Github -> provide cnt name, provide githubname, code repositoryname, and branch name,  next
+     -> Other build providers - select CodeBuild, select projectname,  next, next, and create Pipeline
