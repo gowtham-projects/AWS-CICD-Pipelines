@@ -4,7 +4,7 @@ Step 1:
   Go to Code Build -> Get Started
      -> Provide name, default project
      -> Provide source provider code where it exists (Github), public repository, repository URL
-     -> Add the Buildspec, by adding the buildspec file name from our code files, Create CodeBuild Project ("We can notification also here")
+     -> Add the Buildspec, by adding the buildspec file name from our code files, Create CodeBuild Project ("We can create a notification alert here")
 
 We need to run the CodeBuild in CodePipeline
 
@@ -13,3 +13,19 @@ Step 2:
      -> Build CustomPipeline, provide pipeline name, queued mode,  next
      -> Provide Source provider(Github via App), click connect to Github -> provide cnt name, provide githubname, code repositoryname, and branch name,  next
      -> Other build providers - select CodeBuild, select projectname,  next, next, and create Pipeline
+
+   * CodeBuild -> After build, the file will be available in the S3 Bucket
+   * CodeDeploy -> It needs to take file from S3 Bucket and Provide to -> EC2 Instance
+
+Step 3:
+  To take a file from an S3 Bucket, it needs permissions.
+     -> Create IAM Role(without providing AWS config access keys) for EC2, attach policies S3 Permissions,amazonEC2RoleforCodeDeploy attach this IAM Role to EC2 Instance.
+  We need to install Code Deploy Agent in the EC2 Instance(Check - Install Code Deploy Agent, AWS documentation is there):
+     -> create script (vim agent.sh), run (sh agent.sh)    
+     -> do all things and do a status check
+
+Step 4:
+  Go to CodeDeploy -> Get Started
+     ->
+
+ 
