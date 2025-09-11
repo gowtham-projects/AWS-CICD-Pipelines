@@ -1,0 +1,7 @@
+Steps to create the environment in AWS:
+
+Step 1:
+  Got to Code Build -> Get Started
+     -> Provide name, default project
+     -> Provide source provider code where it exists (Github), public repository, repository URL
+     -> Add the Buildspec, by adding the buildspec file name from our code files, Create CodeBuild Project
