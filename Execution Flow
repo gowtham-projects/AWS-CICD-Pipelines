@@ -18,7 +18,7 @@ Step 2:
    * CodeDeploy -> It needs to take file from S3 Bucket and Provide to -> EC2 Instance
 
 Step 3:
-  To take a file from an S3 Bucket, it needs permissions.
+  EC2 Permissions - To retrieve a file from an S3 Bucket, it requires specific permissions.
      -> Create IAM Role(without providing AWS config access keys) for EC2, attach policies S3 Permissions,amazonEC2RoleforCodeDeploy attach this IAM Role to EC2 Instance.
   We need to install Code Deploy Agent in the EC2 Instance(Check - Install Code Deploy Agent, AWS documentation is there):
      -> create script (vim agent.sh), run (sh agent.sh)    
@@ -26,6 +26,16 @@ Step 3:
 
 Step 4:
   Go to CodeDeploy -> Get Started
-     ->
+     -> Provide application name, select deployment platform (EC2), and create application.
+     -> Code Deploy needs permissions - It needs to take an S3 file and deploy in EC2, create IAM Role for CodeDeploy & attach S3, EC2 policies
+    --> Create a Deployment group, provide a name, select the created IAM Role, EC2 environment - add key & value, disable LB, create Deployment group
 
- 
+Step 5:
+  Go to CodePipeline -> In CodePipeline IAM Role, verify that CodeBuild and CodeDeploy have the necessary permissions. If not, attach it.
+    -> Edit Pipeline, add/create Deploy Stage after Build - provide name, add action group - provide name, action provider - codedeploy, 
+                      Input artifact - source artifact, select app name, deployment group, done, save it.
+
+==> Start Release changes, it will start from source, build, and deploy to succeed.
+
+==> In the future, if a developer commits any changes to the Source(Git). It automatically runs from source -> build -> deploy to production.
+
