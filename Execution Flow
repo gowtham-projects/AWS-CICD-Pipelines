@@ -34,6 +34,7 @@ Step 5:
   Go to CodePipeline -> In CodePipeline IAM Role, verify that CodeBuild and CodeDeploy have the necessary permissions. If not, attach it.
     -> Edit Pipeline, add/create Deploy Stage after Build - provide name, add action group - provide name, action provider - codedeploy, 
                       Input artifact - source artifact, select app name, deployment group, done, save it.
+ Note: Check and provide the CodeDeploy policy in the CodePipelineService Role for successful deployment to EC2.
 
 ==> Start Release changes, it will start from source, build, and deploy to succeed.
 
